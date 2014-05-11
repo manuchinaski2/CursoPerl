@@ -1,0 +1,230 @@
+0. ALTA EN FLUIDDB
+
+
+1. INSTALACIÓN DEL PAQUETE Net::Fluidinfo
+
+1.1. Istalación desde CPAN de Net::Fluidinfo
+Origina el siguiente error:
+
+Test Summary Report
+-------------------
+t/10-search.t         (Wstat: 768 Tests: 21 Failed: 3)
+  Failed tests:  17-19
+  Non-zero exit status: 3
+Files=20, Tests=508, 245 wallclock secs ( 0.26 usr  0.06 sys + 15.99 cusr  1.28 csys = 17.59 CPU)
+Result: FAIL
+Failed 1/20 test programs. 3/508 subtests failed.
+make: *** [test_dynamic] Error 255
+  FXN/Net-Fluidinfo-0.45.tar.gz
+  /usr/bin/make test -- NOT OK
+//hint// to see the cpan-testers results for installing this module, try:
+  reports FXN/Net-Fluidinfo-0.45.tar.gz
+Running make install
+  make test had returned bad status, won't install without force
+Failed during this command:
+ FXN/Net-Fluidinfo-0.45.tar.gz                : make_test NO
+
+======================================================================
+Originando en la ejecución el siguiente error al no encotrar el paquete:
+========================================================================
+
+Can't locate Net/Fluidinfo.pm in @INC (@INC contains: /home/manu/perl5/lib/perl5/x86_64-linux-gnu-thread-multi /home/manu/perl5/lib/perl5/x86_64-linux-gnu-thread-multi /home/manu/perl5/lib/perl5 /etc/perl /usr/local/lib/perl/5.14.2 /usr/local/share/perl/5.14.2 /usr/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.14 /usr/share/perl/5.14 /usr/local/lib/site_perl .) at ./ejercicio6.pl line 3.
+BEGIN failed--compilation aborted at ./ejercicio6.pl line 3.
+
+1.2 Instalando con Net-Fluidinfo-0.45.tar.gz
+
+Se descomprime y origina el directorio  Net-Fluidinfo-0.45   
+En el README indica las instrucciones de instalación:
+If you got a tarball the old-school way of installing is:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+El make test origina:
+Test Summary Report
+-------------------
+t/10-search.t         (Wstat: 768 Tests: 21 Failed: 3)
+  Failed tests:  17-19
+  Non-zero exit status: 3
+Files=20, Tests=507, 289 wallclock secs ( 0.22 usr  0.09 sys + 17.59 cusr  1.47 csys = 19.37 CPU)
+Result: FAIL
+Failed 1/20 test programs. 3/507 subtests failed.
+make: *** [test_dynamic] Error 255
+
+3. Ejecución del  programa 
+
+#!/usr/bin/perl -w 
+
+use Net::Fluidinfo;
+
+ # Predefined Fluidinfo client for playing around, points
+ # to the sandbox with user test/test
+ $fin = Net::Fluidinfo->new_for_testing;
+ $fin = Net::Fluidinfo->new_for_testing(trace_http => 1);
+
+ # Fluidinfo client pointing to production
+ $fin = Net::Fluidinfo->new(username => '********', password => '********');
+
+ # Fluidinfo taking credentials from environment variables
+ # FLUIDINFO_USERNAME and FLUIDINFO_PASSWORD
+ $fin = Net::Fluidinfo->new;
+
+ # Content-MD5 headers with checksums for requests with payload
+ $fin = Net::Fluidinfo->new(md5 => 1);
+
+ # Resource getters
+ $object     = $fin->get_object_by_id($id, about => 1);
+ $object     = $fin->get_object_by_about($about);
+ $ns         = $fin->get_namespace($path, description => 1);
+ $tag        = $fin->get_tag($path, description => 1);
+ $permission = $fin->get_permission($category, $path_or_has_path, $action);
+ $user       = $fin->get_user($username);
+
+ # Object search
+ @ids = $fin->search("has fxn/rating");
+
+4. Salida de ejecución del programa:
+
+Name "main::category" used only once: possible typo at ./ejercicio6.pl line 25.
+Name "main::user" used only once: possible typo at ./ejercicio6.pl line 26.
+Name "main::tag" used only once: possible typo at ./ejercicio6.pl line 24.
+Name "main::id" used only once: possible typo at ./ejercicio6.pl line 21.
+Name "main::permission" used only once: possible typo at ./ejercicio6.pl line 25.
+Name "main::about" used only once: possible typo at ./ejercicio6.pl line 22.
+Name "main::ids" used only once: possible typo at ./ejercicio6.pl line 29.
+Name "main::path_or_has_path" used only once: possible typo at ./ejercicio6.pl line 25.
+Name "main::username" used only once: possible typo at ./ejercicio6.pl line 26.
+Name "main::ns" used only once: possible typo at ./ejercicio6.pl line 23.
+Name "main::action" used only once: possible typo at ./ejercicio6.pl line 25.
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 400 Bad Request
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:29 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:29 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Argument: query
+X-Fluiddb-Error-Class: MissingArgument
+X-Fluiddb-Request-Id: API-9005-20140401-154429-59229498
+
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 405 Method Not Allowed
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:29 GMT
+Server: nginx/1.1.19
+Allow: 
+Content-Length: 227
+Content-Type: text/html; charset=utf-8
+Client-Date: Tue, 01 Apr 2014 15:44:29 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Title: 405 - Method Not Allowed
+X-Fluiddb-Error-Class: UnsupportedMethod
+X-Fluiddb-Request-Id: API-9007-20140401-154429-59240359
+
+
+<html>
+  <head><title>405 - Method Not Allowed</title></head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>Your browser approached me (at /about) with the method "GET".  I only allow the method  here.</p>
+  </body>
+</html>
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 404 Not Found
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:30 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:30 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Error-Class: TNonexistentNamespace
+X-Fluiddb-Path: 
+X-Fluiddb-Request-Id: API-9008-20140401-154430-59227229
+
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 404 Not Found
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:30 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:30 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Error-Class: TNonexistentTag
+X-Fluiddb-Path: None
+X-Fluiddb-Request-Id: API-9002-20140401-154430-59234202
+
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+Use of uninitialized value $_[2] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 405 Method Not Allowed
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:31 GMT
+Server: nginx/1.1.19
+Allow: 
+Content-Length: 241
+Content-Type: text/html; charset=utf-8
+Client-Date: Tue, 01 Apr 2014 15:44:31 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Title: 405 - Method Not Allowed
+X-Fluiddb-Error-Class: UnsupportedMethod
+X-Fluiddb-Request-Id: API-9004-20140401-154431-59237736
+
+
+<html>
+  <head><title>405 - Method Not Allowed</title></head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>Your browser approached me (at /permissions?action=) with the method "GET".  I only allow the method  here.</p>
+  </body>
+</html>
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 405 Method Not Allowed
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:31 GMT
+Server: nginx/1.1.19
+Allow: POST, OPTIONS
+Content-Length: 241
+Content-Type: text/html; charset=utf-8
+Client-Date: Tue, 01 Apr 2014 15:44:31 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Title: 405 - Method Not Allowed
+X-Fluiddb-Error-Class: UnsupportedMethod
+X-Fluiddb-Request-Id: API-9003-20140401-154431-59243429
+
+
+<html>
+  <head><title>405 - Method Not Allowed</title></head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>Your browser approached me (at /users) with the method "GET".  I only allow the methods POST, OPTIONS here.</p>
+  </body>
+</html>
+HTTP/1.1 404 Not Found
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:31 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:31 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Error-Class: TNonexistentTag
+X-Fluiddb-Path: fxn/rating
+X-Fluiddb-Request-Id: API-9008-20140401-154431-59227230
+
+===========================================================================
+
+Desconozco porque me sale el error 405  de Método no permitido.
+
+=========================================================================

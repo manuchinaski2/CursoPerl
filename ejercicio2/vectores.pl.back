@@ -1,0 +1,110 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+#definición de las funciones
+sub imprimir_vector(@);
+sub dimension_vector(@);
+sub suma_vectores(@);
+sub suma_iterariva_vector(@);
+sub suma_recursiva_vector(@);
+sub multiplicacion_vector_numero($@);
+sub multiplicacion_vector_matriz($@);
+
+#datos iniciales
+my @dni=(2,5,9,9,1,2,3,4);
+my $dni=@dni; #dimension del vector
+my @matriz =(
+(1,1,1,1,1,1,1,1),
+(2,2,2,2,2,2,2,2),
+(3,3,3,3,3,3,3,3),
+(4,4,4,4,4,4,4,4),
+(5,5,5,5,5,5,5,5),
+(6,6,6,6,6,6,6,6),
+(7,7,7,7,7,7,7,7),
+(8,8,8,8,8,8,8,8)
+);
+my $matriz=&dimension_vector(@matriz);
+#print $matriz,"\n\n";
+&multiplicacion_vector_matriz($matriz,@dni,@matriz) if ($matriz==$dni);
+
+sub multiplicacion_vector_matriz($@){
+#print "llego\n";
+(my $dimension,my @vector_inicial)=@_;
+#print $dimension,"llego\n";
+my @vector;
+my @matriz;
+for (my $i=0;$i<$dimension;$i++){
+my $valor=shift(@vector_inicial);
+push @vector,$valor;
+}
+#print @vector_inicial,"\n";
+}
+sub dimension_vector(@){
+my $i;
+my $longitud=@_;
+for ($i=1;$i*$i<$longitud;$i++){
+}
+return $i;
+}
+
+#imprimimos los componentes de un vector
+sub imprimir_vector(@){
+my @lista_formateada;
+foreach my $valor(@_){
+push @lista_formateada,$valor;
+push @lista_formateada,"-";
+}
+pop(@lista_formateada);
+return @lista_formateada;
+}
+
+#suma iterativa componentes vector
+sub suma_iterativa_vector(@){
+my $suma=0;
+foreach my $valor(@_){
+$suma+=$valor;
+}
+return $suma;
+}
+
+#suma recursiva componentes vector
+sub suma_recursiva_vector(@){
+my $tamano=@_;
+if ($tamano==1){
+ return $_[0];
+}
+else{
+ return pop(@_)+&suma_recursiva_vector(@_); 
+}
+}
+
+sub suma_vectores(@){
+my @nuevo_vector;
+my $dimension = @_/2;
+for (my $i=0;$i<$dimension;$i++){
+push @nuevo_vector, $_[$i]+$_[$i+$dimension];
+}
+return @nuevo_vector;
+}
+
+sub multiplicacion_vector_numero($@){
+(my $multiplicador,my @vector) =(@_);
+my $dimension=@vector;
+my @nuevo_vector;
+for (my $i=0;$i<$dimension;$i++){
+push @nuevo_vector,$vector[$i]*$multiplicador;
+}
+return @nuevo_vector;
+}
+
+ 
+#sumamos dos vectores si son de la misma dimensión
+#my $suma = &suma_iterativa_vector(@dni);
+print "Valor del vector dni: ", &imprimir_vector(@dni),"\n";
+print "Valor de la suma de componentes vector de forma iterativa: ",&suma_iterativa_vector(@dni),"\n";
+print "Valor de la suma de componentes vector de forma recursiva: ",&suma_recursiva_vector(@dni),"\n";
+my @vector_suma = &suma_vectores(@dni,@dni) if ($dni == $dni);
+print "Suma del vector dni con vector dni : ",&imprimir_vector(@vector_suma),"\n";
+my $multiplicando=10;
+print "Valor de multiplicar el vector dni por ",$multiplicando, " es: ", &imprimir_vector(&multiplicacion_vector_numero($multiplicando,@dni)),"\n";

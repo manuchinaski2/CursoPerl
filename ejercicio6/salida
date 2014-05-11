@@ -1,0 +1,136 @@
+Name "main::category" used only once: possible typo at ./ejercicio6.pl line 25.
+Name "main::user" used only once: possible typo at ./ejercicio6.pl line 26.
+Name "main::tag" used only once: possible typo at ./ejercicio6.pl line 24.
+Name "main::id" used only once: possible typo at ./ejercicio6.pl line 21.
+Name "main::permission" used only once: possible typo at ./ejercicio6.pl line 25.
+Name "main::about" used only once: possible typo at ./ejercicio6.pl line 22.
+Name "main::ids" used only once: possible typo at ./ejercicio6.pl line 29.
+Name "main::path_or_has_path" used only once: possible typo at ./ejercicio6.pl line 25.
+Name "main::username" used only once: possible typo at ./ejercicio6.pl line 26.
+Name "main::ns" used only once: possible typo at ./ejercicio6.pl line 23.
+Name "main::action" used only once: possible typo at ./ejercicio6.pl line 25.
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 400 Bad Request
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:29 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:29 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Argument: query
+X-Fluiddb-Error-Class: MissingArgument
+X-Fluiddb-Request-Id: API-9005-20140401-154429-59229498
+
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 405 Method Not Allowed
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:29 GMT
+Server: nginx/1.1.19
+Allow: 
+Content-Length: 227
+Content-Type: text/html; charset=utf-8
+Client-Date: Tue, 01 Apr 2014 15:44:29 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Title: 405 - Method Not Allowed
+X-Fluiddb-Error-Class: UnsupportedMethod
+X-Fluiddb-Request-Id: API-9007-20140401-154429-59240359
+
+
+<html>
+  <head><title>405 - Method Not Allowed</title></head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>Your browser approached me (at /about) with the method "GET".  I only allow the method  here.</p>
+  </body>
+</html>
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 404 Not Found
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:30 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:30 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Error-Class: TNonexistentNamespace
+X-Fluiddb-Path: 
+X-Fluiddb-Request-Id: API-9008-20140401-154430-59227229
+
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 404 Not Found
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:30 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:30 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Error-Class: TNonexistentTag
+X-Fluiddb-Path: None
+X-Fluiddb-Request-Id: API-9002-20140401-154430-59234202
+
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+Use of uninitialized value $_[2] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 405 Method Not Allowed
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:31 GMT
+Server: nginx/1.1.19
+Allow: 
+Content-Length: 241
+Content-Type: text/html; charset=utf-8
+Client-Date: Tue, 01 Apr 2014 15:44:31 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Title: 405 - Method Not Allowed
+X-Fluiddb-Error-Class: UnsupportedMethod
+X-Fluiddb-Request-Id: API-9004-20140401-154431-59237736
+
+
+<html>
+  <head><title>405 - Method Not Allowed</title></head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>Your browser approached me (at /permissions?action=) with the method "GET".  I only allow the method  here.</p>
+  </body>
+</html>
+Use of uninitialized value $_[1] in join or string at /home/manu/perl5/lib/perl5/Net/Fluidinfo/Base.pm line 38.
+HTTP/1.1 405 Method Not Allowed
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:31 GMT
+Server: nginx/1.1.19
+Allow: POST, OPTIONS
+Content-Length: 241
+Content-Type: text/html; charset=utf-8
+Client-Date: Tue, 01 Apr 2014 15:44:31 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Title: 405 - Method Not Allowed
+X-Fluiddb-Error-Class: UnsupportedMethod
+X-Fluiddb-Request-Id: API-9003-20140401-154431-59243429
+
+
+<html>
+  <head><title>405 - Method Not Allowed</title></head>
+  <body>
+    <h1>Method Not Allowed</h1>
+    <p>Your browser approached me (at /users) with the method "GET".  I only allow the methods POST, OPTIONS here.</p>
+  </body>
+</html>
+HTTP/1.1 404 Not Found
+Connection: close
+Date: Tue, 01 Apr 2014 15:44:31 GMT
+Server: nginx/1.1.19
+Content-Type: text/html
+Client-Date: Tue, 01 Apr 2014 15:44:31 GMT
+Client-Peer: 174.129.210.19:80
+Client-Response-Num: 1
+Client-Transfer-Encoding: chunked
+X-Fluiddb-Error-Class: TNonexistentTag
+X-Fluiddb-Path: fxn/rating
+X-Fluiddb-Request-Id: API-9008-20140401-154431-59227230
+
